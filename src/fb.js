@@ -39,5 +39,9 @@ var FB = (function(){
     });
   };
 
+  self.api = function(path, callback) {
+    FBStub.addApiRequest(path, callback);
+  };
+
   return self;
 }( ));
