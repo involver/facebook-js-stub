@@ -1,13 +1,17 @@
 var FB = (function(){
   var self = { };
-  var appId;
 
   self.init = function(options) {
-    appId = options.appId;
+    FBStub.appId(options.appId);
+  };
+
+  self.login = function(callback) {
+    if (!FBStub.initialized()) return;
+    FBStub.loginCallback = callback;
   };
 
   self.getLoginStatus = function(callback) {
-    if (!initialized()) return;
+    if (!FBStub.initialized()) return;
     var status;
     var authResponse = null;
 
@@ -34,10 +38,6 @@ var FB = (function(){
       authResponse: authResponse
     });
   };
-
-  function initialized() {
-    return (typeof(appId) == 'number' || typeof(appId) == "string");
-  }
 
   return self;
 }( ));
