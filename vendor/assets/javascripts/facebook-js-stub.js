@@ -39,6 +39,10 @@ var FB = (function(){
     });
   };
 
+  self.api = function(path, callback) {
+    FBStub.addApiRequest(path, callback);
+  };
+
   return self;
 }( ));
 
@@ -57,6 +61,12 @@ var FBStub = (function() {
   };
 
   initialize();
+
+  var apiRequests = { };
+
+  self.addApiRequest = function(path, callback) {
+    apiRequests[path] = callback;
+  };
 
   self.loggedIn = function(user) {
     state.loggedIn = true;
@@ -126,6 +136,11 @@ var FBStub = (function() {
       status: "unknown",
       authResponse: null
     });
+  };
+
+  self.respondToApiRequest = function(path, response) {
+    if (typeof(apiRequests[path]) === 'undefined') return;
+    apiRequests[path](response);
   };
 
   self.initialized = function() {
