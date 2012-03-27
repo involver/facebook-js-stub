@@ -45,7 +45,6 @@ var FB = (function(){
 
   return self;
 }( ));
-
 var FBStub = (function() {
   var self = { };
 
@@ -66,6 +65,10 @@ var FBStub = (function() {
 
   self.addApiRequest = function(path, callback) {
     apiRequests[path] = callback;
+  };
+
+  self.findApiRequest = function(path) {
+    return apiRequests[path];
   };
 
   self.loggedIn = function(user) {
