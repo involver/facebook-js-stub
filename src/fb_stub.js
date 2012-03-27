@@ -20,6 +20,10 @@ var FBStub = (function() {
     apiRequests[path] = callback;
   };
 
+  self.findApiRequest = function(path) {
+    return apiRequests[path];
+  };
+
   self.loggedIn = function(user) {
     state.loggedIn = true;
     state.user = user || {};

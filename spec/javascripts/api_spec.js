@@ -38,6 +38,10 @@ describe("FB.api", function () {
       };
     });
 
+    it("should match open requests", function() {
+      expect(FBStub.findApiRequest("/some/path")).toBeDefined();
+    });
+
     it("should not yet call the callback function", function() {
       expect(callbacks.api).not.toHaveBeenCalled();
     });
