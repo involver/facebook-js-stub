@@ -48,7 +48,7 @@ var FB = (function(){
 var FBStub = (function() {
   var self = { };
 
-  var state;
+  var state, apiRequests;
 
   var initialize = function() {
     state = {
@@ -57,11 +57,10 @@ var FBStub = (function() {
       'appId': null,
       'user': {}
     };
+    apiRequests = { };
   };
 
   initialize();
-
-  var apiRequests = { };
 
   self.addApiRequest = function(path, callback) {
     apiRequests[path] = callback;
