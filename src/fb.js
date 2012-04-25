@@ -39,12 +39,19 @@ var FB = (function(){
     });
   };
 
-  self.api = function(path, params, callback) {
-    if (typeof params === 'function') {
-      FBStub.addApiRequest(path, params);
+  self.api = function(path, method, params, callback) {
+    var callbackMethod;
+
+    if (typeof method === 'function') {
+      callbackMethod = method;
     } else {
-      FBStub.addApiRequest(path, callback);
+      if (typeof params == 'function') {
+        callbackMethod = params;
+      } else {
+        callbackMethod = callback;
+      }
     }
+    FBStub.addApiRequest(path, callbackMethod);
   };
 
   return self;

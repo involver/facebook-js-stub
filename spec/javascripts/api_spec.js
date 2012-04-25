@@ -72,12 +72,12 @@ describe("FB.api", function () {
       shared_callback_examples();
     });
 
-    describe("when given path, object, and callback params", function() {
+    describe("when given path, method ,object, and callback params", function() {
       var myObj = { };
 
       beforeEach(function () {
         FB.init({appId:123});
-        FB.api("/some/path", myObj, callbacks.api);
+        FB.api("/some/path", "post", myObj, callbacks.api);
 
         response = {
           data: [
