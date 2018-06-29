@@ -10,7 +10,7 @@ simulating different Facebook states.
 
 ### Jasmine on Rails 3.1
 
-If using the edge version of [Jasmine](http://pivotal.github.com/jasmine/) with the Rails 3.1 asset pipeline:
+If using the edge version of [Jasmine](https://jasmine.github.io/) with the Rails 3.1 asset pipeline:
 
 1. Add the gem to your Gemfile:
 
